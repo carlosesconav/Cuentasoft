@@ -48,7 +48,7 @@
                             <a class="nav-link text-white" href="{{ route('clientes.index') }}">Clientes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Documentos</a>
+                            <a class="nav-link text-white" href="{{ route('documentos.index') }}">Documentos</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"

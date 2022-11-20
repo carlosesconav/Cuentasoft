@@ -21,6 +21,7 @@ class CreateCuentaCobrosTable extends Migration
             $table->string('valor');
             $table->integer('meses_pagados');
             $table->date('fecha_pago');
+            $table->timestamps();
 
         });
     }

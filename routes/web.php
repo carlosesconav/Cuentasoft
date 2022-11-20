@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\CuentaCobroController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FormatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,12 +35,17 @@ Route::group(['middleware' => 'auth'], function() {
 //Rutas de cuentas de cobro
 Route::resource('cuentas',CuentaCobroController::class);
 
+
 //Rutas de los clientes
 Route::resource('clientes',ClientesController::class);
 
 //Rutas del home
  Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/inicio', [HomeController::class, 'menu'])->name('menu');
+
+//rutas de documentos
+Route::resource('documentos',FormatController::class);
+Route::get('/documentos', [FormatController::class, 'descargar'])->name('documentos.descargar');
 
 
 });

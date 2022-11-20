@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+
 class ClientesController extends Controller
 {
     /**
@@ -92,10 +93,21 @@ class ClientesController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $data = request()->except(['_token', '_method']);
+        $clientes = request()->except(['_token', '_method']);
+
+        if($request->hasFile('foto')){
+
+            $clientes = Clientes::findOrFail($id);
+            Storage::delete('public/'.$clientes->foto);
+
+            $data['foto']=$request->file('foto')->store('uploads','public');
+
+        }
+
         Clientes::where('id','=',$id)->update($data);
-        
-        return redirect()->route('clientes.index')->with('success','Concepto Actualizado Correctamente');
+        $clientes = Clientes::findOrFail($id);
+
+        return redirect()->route('clientes.index')->with(compact('clientes'));
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cuenta_cobro;
+use App\Models\Clientes;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +18,9 @@ class CuentaCobroController extends Controller
      */
     public function index()
     {
-        return view('cuentas.index');
+        $cuentas = cuenta_cobro::all();
+
+        return view('cuentas.index')->with('cuentas',$cuentas);
     }
 
     /**
@@ -27,7 +30,10 @@ class CuentaCobroController extends Controller
      */
     public function create()
     {
-        //
+
+        $clientes = Clientes::all();
+
+        return view('cuentas.create')->with('clientes',$clientes);;
     }
 
     /**
@@ -38,7 +44,11 @@ class CuentaCobroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $infoCuentas = request()->except('_token');
+
+        cuenta_cobro::insert($infoCuentas);
+
+        return redirect()->route('cuentas.index')->with('Campos agregados correctamente');
     }
 
     /**
@@ -58,9 +68,11 @@ class CuentaCobroController extends Controller
      * @param  \App\Models\cuenta_cobro  $cuenta_cobro
      * @return \Illuminate\Http\Response
      */
-    public function edit(cuenta_cobro $cuenta_cobro)
+    public function edit($id)
     {
-        //
+        $clientes = Clientes::all();
+        $data = cuenta_cobro::findOrFail($id);
+        return view('cuentas.edit',compact('data','clientes'));
     }
 
     /**
@@ -70,9 +82,12 @@ class CuentaCobroController extends Controller
      * @param  \App\Models\cuenta_cobro  $cuenta_cobro
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, cuenta_cobro $cuenta_cobro)
+    public function update(Request $reques,$id)
     {
-        //
+        $data = request()->except(['_token', '_method']);
+        cuenta_cobro::where('id','=',$id)->update($data);
+        
+        return redirect()->route('cuentas.index')->with('success','Cuenta Actualizado Correctamente');
     }
 
     /**
@@ -81,8 +96,10 @@ class CuentaCobroController extends Controller
      * @param  \App\Models\cuenta_cobro  $cuenta_cobro
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cuenta_cobro $cuenta_cobro)
+    public function destroy($id)
     {
-        //
+        cuenta_cobro::destroy($id);
+        return redirect()->route('cuentas.index');
+
     }
 }
