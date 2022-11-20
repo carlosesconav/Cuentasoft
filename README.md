@@ -1,6 +1,6 @@
 # CUENTASOFT
 
-### project developed in laravel 8
+### Version: Laravel 8
 
 How to run the project?
 
