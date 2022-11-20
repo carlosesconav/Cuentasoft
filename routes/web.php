@@ -5,16 +5,6 @@ use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\CuentaCobroController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FormatController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('auth');
@@ -45,8 +35,7 @@ Route::get('/inicio', [HomeController::class, 'menu'])->name('menu');
 
 //rutas de documentos
 Route::resource('documentos',FormatController::class);
-Route::get('/documentos', [FormatController::class, 'descargar'])->name('documentos.descargar');
-
+Route::get('/documentos.descargar', [FormatController::class, 'descargar'])->name('documentos.descargar');
 
 });
 

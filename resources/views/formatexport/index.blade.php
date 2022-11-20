@@ -1,21 +1,31 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
-
+    <div class="container text-center">
+        
         <div class="form-group">
-            <label class="form-label" for="cliente">Cliente:</label>
-            <select id="cliente" class="form-select" name="cliente" aria-label="Default select example">
-                <option selected disabled>SELECCIONE UN DOCUMENTO</option>
-
-                <option selected value="">Clientes</option>
-                <option selected value="">Cuentas</option>
-
-              </select>
+            <label class="form-label" for="clientes">Descargar formato de clientes:</label>
+            <br/>
+            <a id="clientes" name="clientes" href="{{ route('documentos.create') }} " class="btn btn-primary">Descargar clientes</a>
             <br/>
         </div>
 
-        <a href="{{ route('documentos.descargar') }} " class="btn btn-primary">Descargar</a>
+        <div class="form-group">
 
+            <input type="hidden" name="" id="">
+            <input type="hidden" name="" id="">
+
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="cuentas">Descargar formato de cuentas:</label>
+            <br/>
+            <a id="clientes" name="cuentas" href="{{ route('documentos.descargar') }} " class="btn btn-primary">Descargar cuentas</a>
+            <br/>
+        </div>
+
+      
+        
+        
 
     </div>
 @endsection
