@@ -30,7 +30,7 @@
         <nav class="navbar navbar-expand-lg bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                
+
                     <img src=" {{ asset('images/ICON_1.png') }} " class="rounded" height="65" width="95">
 
                 </a>
@@ -42,7 +42,8 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" aria-current="page" href="{{ route('cuentas.index') }}">Cuentas de cobro</a>
+                            <a class="nav-link text-white" aria-current="page"
+                                href="{{ route('cuentas.index') }}">Cuentas de cobro</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="{{ route('clientes.index') }}">Clientes</a>
@@ -51,12 +52,13 @@
                             <a class="nav-link text-white" href="{{ route('documentos.index') }}">Documentos</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle  text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li> <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesion') }}
                                     </a>
 
