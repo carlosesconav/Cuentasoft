@@ -48,7 +48,7 @@
 
                                 <button class="btn btn-outline-danger" type="submit">ELIMINAR</button>
 
-
+                            </form>
 
                         </th>
 
