@@ -1,6 +1,6 @@
-#CUENTASOFT
+# CUENTASOFT
 
-###project developed in laravel 8
+### project developed in laravel 8
 
 How to run the project?
 
