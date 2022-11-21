@@ -93,7 +93,7 @@ class ClientesController extends Controller
      */
     public function update(Request $request,$id)
     {
-        $clientes = request()->except(['_token', '_method']);
+        $data = request()->except(['_token', '_method']);
 
         if($request->hasFile('foto')){
 
@@ -105,9 +105,9 @@ class ClientesController extends Controller
         }
 
         Clientes::where('id','=',$id)->update($data);
-        $clientes = Clientes::findOrFail($id);
+        $data = Clientes::findOrFail($id);
 
-        return redirect()->route('clientes.index')->with(compact('clientes'));
+        return redirect()->route('clientes.index')->with(compact('data'));
     }
 
     /**
