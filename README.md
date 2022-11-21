@@ -33,7 +33,7 @@ php artisan config:cache
 
 6. Run the migrations:
 ```
-php artisan mmigrate
+php artisan migrate
 ```
 
 7. Enable storage:
